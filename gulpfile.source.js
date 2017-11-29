@@ -12,7 +12,7 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    usemin = require('gulp-usemin'),
+    csso = require('gulp-csso'),
     stripDebug = require('gulp-strip-debug'),
     babel = require('gulp-babel')
 
@@ -45,7 +45,7 @@ const gulp = require('gulp'),
         .pipe($.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe(rename("style.css"))
-        .pipe($.if('*.css', usemin()))
+        .pipe(csso())
         .pipe($.header( wp_definition ))
         .pipe($.replace('../',''))
         .pipe( gulp.dest( wp_theme_directory ) )
